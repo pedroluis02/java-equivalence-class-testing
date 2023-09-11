@@ -1,9 +1,28 @@
 package com.github.pedroluis02.equivalenceclasstesting.simple;
 
 public class MathFunctions {
+
+    public static double SQUARE_ROOT_TOLERANCE = 0.00001;
+
     public static int factorial(int n) {
         assert n >= 0;
         return factorialFunc(n);
+    }
+
+    public static double squareRoot(double n) {
+        return squareRoot(n, SQUARE_ROOT_TOLERANCE);
+    }
+
+    public static double squareRoot(double n, double tolerance) {
+        assert n >= 0;
+
+        if (n == 0) {
+            return 0;
+        } else {
+            final double guess = (n / 2);
+
+            return squareRootFunc(n, guess, tolerance);
+        }
     }
 
     // fact(n) = n! = 1 * 2 * 3 * ... * n
@@ -14,5 +33,13 @@ public class MathFunctions {
             return 1;
         else
             return n * factorialFunc(n - 1);
+    }
+
+    private static double squareRootFunc(double n, double guess, double tolerance) {
+        double nextGuess = (guess + n / guess) / 2;
+        if (Math.abs(guess - nextGuess) <= tolerance)
+            return nextGuess;
+        else
+            return squareRootFunc(n, nextGuess, tolerance);
     }
 }
