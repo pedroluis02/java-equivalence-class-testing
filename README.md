@@ -3,9 +3,10 @@ Java Equivalence Class Testing and JUnit 5
 
 ## Topics
 - Java Asserts
-- Unit Test
+- Unit Tests
 - Asserts with matchers
+- Suits of tests
 
 ## Technologies
-- JUnit 5
-- Hamcrest Matchers
+- [JUnit 5: Jupiter](https://junit.org/junit5/docs/current/user-guide/)
+- [Hamcrest Library: Matchers](https://github.com/hamcrest/JavaHamcrest)
