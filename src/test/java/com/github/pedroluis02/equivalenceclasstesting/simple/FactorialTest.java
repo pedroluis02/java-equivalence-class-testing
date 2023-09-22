@@ -23,9 +23,9 @@ public class FactorialTest {
         assertEquals(3628800, MathFunctions.factorial(10));
     }
 
-    // n is max integer
+    // n is max value
     @Test
     public void testEquivalenceClassThree() {
-        assertEquals(479001600, MathFunctions.factorial(12));
+        assertEquals(2004189184, MathFunctions.factorial(MathFunctions.MAX_INT_FACTORIAL_VALUE));
     }
 }
