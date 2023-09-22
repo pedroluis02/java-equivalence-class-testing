@@ -2,11 +2,17 @@ package com.github.pedroluis02.equivalenceclasstesting.simple;
 
 public class MathFunctions {
 
+    public static int MAX_INT_FACTORIAL_VALUE = 16;
     public static double SQUARE_ROOT_TOLERANCE = 0.00001;
 
     public static int factorial(int n) {
         assert n >= 0;
-        return factorialFunc(n);
+        var result = factorialFunc(n);
+        if (result <= 0) {
+            throw new AssertionError();
+        }
+
+        return result;
     }
 
     public static double squareRoot(double n) {
