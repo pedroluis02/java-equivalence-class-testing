@@ -1,5 +1,5 @@
 # Equivalence Class Testing
-Java Equivalence Class Testing and JUnit 5
+Java Equivalence Class Testing, Boundary Values and JUnit 5
 
 ## Topics
 - Java Asserts
