@@ -1,25 +1,32 @@
 package com.github.pedroluis02.equivalenceclasstesting.maxvalue;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public interface MaxNumberValueFinder<E extends Number> {
     default E calculate(MaxValueOperation<E> operation) {
-        E currentMin = getMinRangeValue();
-        E currentMax = getMaxRangeValue();
+        final var logger = Logger.getGlobal();
+
+        E currentMin = minRangeValue();
+        E currentMax = maxRangeValue();
         E currentAverage = average(currentMin, currentMax);
 
         boolean isSafe;
         do {
             isSafe = isSafe(currentAverage, currentMin, currentMax);
             try {
-                System.out.printf("%s from [min=%s max=%s}\n", currentAverage, currentMin, currentMax);
-                System.out.println(operation.method(currentAverage));
-                operation.method(currentAverage);
+                logger.log(Level.INFO, "{0} from [min={1} max={2}]", new Object[]{currentAverage, currentMin,
+                        currentMax});
+                final var result = operation.method(currentAverage);
+                logger.log(Level.INFO, "{0}", result);
+
                 if (!isSafe) {
-                    System.out.printf("%s should be more\n", currentAverage);
+                    logger.log(Level.INFO, "{0} should be more", currentAverage);
                     currentMin = currentAverage;
                 }
-            } catch (AssertionError e){
+            } catch (AssertionError e) {
                 if (!isSafe) {
-                    System.out.printf("%s should be less\n", currentAverage);
+                    logger.log(Level.INFO, "{0} should be less", currentAverage);
                     currentMax = currentAverage;
                 }
             } finally {
@@ -30,9 +37,9 @@ public interface MaxNumberValueFinder<E extends Number> {
         return currentAverage;
     }
 
-    E getMinRangeValue();
+    E minRangeValue();
 
-    E getMaxRangeValue();
+    E maxRangeValue();
 
     E average(E min, E max);
 

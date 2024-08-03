@@ -2,8 +2,8 @@ package com.github.pedroluis02.equivalenceclasstesting.simple;
 
 public class MathFunctions {
 
-    public static int MAX_INT_FACTORIAL_VALUE = 16;
-    public static double SQUARE_ROOT_TOLERANCE = 0.00001;
+    public static final int MAX_INT_FACTORIAL_VALUE = 16;
+    public static final double SQUARE_ROOT_TOLERANCE = 0.00001;
 
     public static int factorial(int n) {
         assert n >= 0;
@@ -26,7 +26,6 @@ public class MathFunctions {
             return 0;
         } else {
             final double guess = (n / 2);
-
             return squareRootFunc(n, guess, tolerance);
         }
     }
